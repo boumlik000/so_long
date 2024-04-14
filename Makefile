@@ -1,7 +1,7 @@
 NAME = so_long
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 CC = cc
-SRC = so_long.c
+SRC = so_long.c get_next_line.c get_next_line_utils.c 
 OBJC =  $(SRC:.c=.o)
 
 all: $(NAME)
@@ -19,6 +19,9 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: fclean all
+re: fclean 
+	$(MAKE) all
+	$(MAKE) clean
+	
 
 .SECONDARY:  $(OBJC)
