@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 14:31:30 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/04/20 17:51:22 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/04/21 18:38:25 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void read_map(t_long *so_long, char **av)
 }
 void flood_fill_return(t_long *so_long)
 {
+    ;
     get_player_cord(so_long);
     fill_array(so_long);
     int i = 0;
@@ -45,17 +46,13 @@ void flood_fill_return(t_long *so_long)
     {
         j = 0;
         while (j < so_long->width)
-        {
-            printf("%d", so_long->visited[i][j]);
             j++;
-        }
-        printf("\n");
         i++;
     }
-    // printf("collect found == %d\n", so_long->collect_found);
-    if (so_long->collect_found != 4)
+    if (so_long->collect_found != map_check_coins(so_long))
     {
-        printf("Error\n");
+        printf("[%d] -- [%d]",so_long->collect_found,map_check_coins(so_long));
+        printf("Error\nfd_return");
         exit(1);
     }
 }
@@ -63,7 +60,6 @@ void flood_fill_return(t_long *so_long)
 
 int	main(int ac, char **av)
 {
-    // int m ;
     if (ac != 2)
         return 1;
         
@@ -81,14 +77,13 @@ int	main(int ac, char **av)
     close(so_long.fd);
     
     //chekers for map
+    read_map1(&so_long,av);
     map_check_borders(&so_long);
     map_chek_width(&so_long);
     map_check_player(&so_long);
     
-    map_check_coins(&so_long);
+    
     flood_fill_return(&so_long);
-    
-    
     
     so_long.height *= 64;
     so_long.width *= 64;

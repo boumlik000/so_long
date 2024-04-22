@@ -4,7 +4,7 @@ CC = cc
 SRC = so_long.c \
 	./get_next_line/get_next_line.c \
 	./get_next_line/get_next_line_utils.c  \
-	./utils/utils.c ./utils/map.c ./utils/map_chek.c
+	./utils/utils.c ./utils/map.c ./utils/map_chek.c ./utils/flood_fill.c
 
 OBJC =  $(SRC:.c=.o)
 

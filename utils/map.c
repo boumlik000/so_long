@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:54:49 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/04/19 16:34:30 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/04/21 18:41:54 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 
 void load_images(t_long *so_long) {
-    so_long->player = mlx_xpm_file_to_image(so_long->mlx, "textures/bottom.xpm", &so_long->width, &so_long->height);
-    so_long->coin = mlx_xpm_file_to_image(so_long->mlx, "textures/coin42.xpm", &so_long->width, &so_long->height);
+    so_long->player = mlx_xpm_file_to_image(so_long->mlx, "textures/player.xpm", &so_long->width, &so_long->height);
+    so_long->coin = mlx_xpm_file_to_image(so_long->mlx, "textures/coin422.xpm", &so_long->width, &so_long->height);
     so_long->wall = mlx_xpm_file_to_image(so_long->mlx, "textures/wall.xpm", &so_long->width, &so_long->height);
     so_long->door = mlx_xpm_file_to_image(so_long->mlx, "textures/DOOR.xpm", &so_long->width, &so_long->height);
+    so_long->floor = mlx_xpm_file_to_image(so_long->mlx, "textures/bottom.xpm", &so_long->width, &so_long->height);
 }
 
 void    print_imgs(t_long *so_long, int height)
@@ -35,12 +36,14 @@ void    print_imgs(t_long *so_long, int height)
         {
             if (so_long->map[i][j] == '1') 
                 mlx_put_image_to_window(so_long->mlx, so_long->window, so_long->wall, j * 64, i * 64);
-            if (so_long->map[i][j] == 'C') 
+            else if (so_long->map[i][j] == 'C') 
                 mlx_put_image_to_window(so_long->mlx, so_long->window, so_long->coin, j * 64, i * 64);
-            if (so_long->map[i][j] == 'P' || so_long->map[i][j] == '0' ) 
+            else if (so_long->map[i][j] == 'P') 
                 mlx_put_image_to_window(so_long->mlx, so_long->window, so_long->player, j * 64, i * 64);
-            if (so_long->map[i][j] == 'E') 
+            else if (so_long->map[i][j] == 'E') 
                 mlx_put_image_to_window(so_long->mlx, so_long->window, so_long->door, j * 64, i * 64);
+            else if (so_long->map[i][j] == '0') 
+                mlx_put_image_to_window(so_long->mlx, so_long->window, so_long->floor, j * 64, i * 64);
             j++;
         }
         i++;
