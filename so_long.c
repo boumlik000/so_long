@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 14:31:30 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/04/21 18:38:25 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/04/25 10:53:56 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,18 @@ void read_map(t_long *so_long, char **av)
 }
 void flood_fill_return(t_long *so_long)
 {
-    ;
     get_player_cord(so_long);
     fill_array(so_long);
-    int i = 0;
-    int j = 0;
     so_long->collect_found = 0;
-    flood_fill(so_long, so_long->player_y, so_long->player_x);
-    while (i < so_long->height)
+    so_long->exit_found = 0;
+    so_long->count = 0;
+    so_long->count_coins_p = 0;
+    so_long->total_collect = map_check_coins(so_long);
+    flood_fill(so_long, so_long->player_y, so_long->player_x);    
+    if (so_long->collect_found != map_check_coins(so_long) || so_long->exit_found != 1)
     {
-        j = 0;
-        while (j < so_long->width)
-            j++;
-        i++;
-    }
-    if (so_long->collect_found != map_check_coins(so_long))
-    {
-        printf("[%d] -- [%d]",so_long->collect_found,map_check_coins(so_long));
-        printf("Error\nfd_return");
+        
+        printf("Error\nunplayable map");
         exit(1);
     }
 }
@@ -62,35 +56,32 @@ int	main(int ac, char **av)
 {
     if (ac != 2)
         return 1;
-        
     t_long so_long;
-    
     read_map(&so_long, av);
 	so_long.mlx = mlx_init();
     so_long.fd = open(av[1], O_RDONLY);
     so_long.height = count_lines(so_long.fd);
     close(so_long.fd);
-    
     so_long.fd = open(av[1], O_RDONLY);
     so_long.line = get_next_line(so_long.fd);
     so_long.width = (ft_strlen(so_long.line) - 1);
     close(so_long.fd);
-    
     //chekers for map
     read_map1(&so_long,av);
     map_check_borders(&so_long);
     map_chek_width(&so_long);
     map_check_player(&so_long);
-    
-    
+    //fllodfill
     flood_fill_return(&so_long);
-    
+    so_long.map_y = so_long.height;
+    so_long.map_x = so_long.width;
     so_long.height *= 64;
     so_long.width *= 64;
-    
+    //print img
     so_long.window = mlx_new_window(so_long.mlx, so_long.width, so_long.height, "boumlik's game");
-    print_imgs(&so_long, so_long.height / 64);
-
+    print_imgs(&so_long, so_long.height * 64);
+    //move player
+    mlx_key_hook(so_long.window, move_player, &so_long);
     mlx_hook(so_long.window, 2, 1L<<0, ft_close, NULL);
     mlx_hook(so_long.window, 17, 0, ft_exit, NULL);
     mlx_loop(so_long.mlx);

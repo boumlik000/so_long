@@ -1,10 +1,12 @@
 NAME = so_long
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g3
 CC = cc
+# FT_PRINTF = ./printf/libftprintf.a
 SRC = so_long.c \
 	./get_next_line/get_next_line.c \
 	./get_next_line/get_next_line_utils.c  \
-	./utils/utils.c ./utils/map.c ./utils/map_chek.c ./utils/flood_fill.c
+	./utils/utils.c ./utils/map.c ./utils/map_chek.c ./utils/flood_fill.c \
+	./utils/player_moves.c ./utils/free.c
 
 OBJC =  $(SRC:.c=.o)
 

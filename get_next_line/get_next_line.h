@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 12:59:21 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/01/14 04:05:37 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/04/25 10:08:47 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strjoin1(char *str);
-size_t	ft_strlen(const char *s);
+int	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 #endif
