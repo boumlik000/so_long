@@ -7,8 +7,9 @@
 # include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
-// #include <X11/keysym.h>
 #include "./get_next_line/get_next_line.h"
+#include "./ft_printf/ft_printf.h"
+// #include <X11/keysym.h>
 // #include "./printf/ft_printf.h"
 
 #define ESC 65307
@@ -22,6 +23,7 @@
 #define arrow_left 65361
 #define arrow_right 65363
 
+
 typedef struct s_long
 {
     void	*mlx;
@@ -32,11 +34,23 @@ typedef struct s_long
     void *coin;
     void *wall;
     void *player;
+    void *player_right;
+    void *player_left0;
+    void *player_left1;
+    void *player_up0;
+    void *player_up1;
+    void *player_down0;
+    void *player_down1;
+    void *door_open;
 
-    int width;
-    int height;
+    int map_height;
+    int map_width;
 
-    int count;
+    int map_check_y;
+    int map_check_x;
+
+    int count_moves;
+    int total_collect;
     int count_coins_p;
 
     int fd;
@@ -50,39 +64,60 @@ typedef struct s_long
     int exit_x;
     int exit_y;
 
-    int map_y;
     int map_x;
+    int map_y;
 
     int exit_found;
     int collect_found ;
+
     int flag_player;
     int flag_coin ;
-    int flag_wall;
     int flag_exit ;
-    int player_height;
-    int player_width;
-    int total_collect;
-
-
 }	t_long;
 
-int ft_close(int keycode, void *tt , t_long *so_long);
-int ft_exit(int keycode , void *tt , t_long *so_long);
+//window
+void validate_and_initialize(t_long *so_long, int ac, char **av);
+void calculate_map_dimensions(t_long *so_long);
+void setup_window(t_long *so_long);
+
+//read map
 int count_lines(int fd);
-int fill_array(t_long *so_long);
-int read_map1(t_long *so_long, char **av);
-void    print_imgs(t_long *so_long, int height);
+int file_count_lines(t_long *so_long, char **av);
+void read_map(t_long *so_long, char **av);
+
+//map cheker
+void map_check_square(t_long *so_long);
+void map_chek_borders(t_long *so_long);
+void map_check_items(t_long *so_long);
+int map_check_path(char *filename);
+int	check_map_is_valid(t_long *so_long, char *filename);
+void flood_fill(t_long *so_long);
+
+//print img
 void load_images(t_long *so_long);
-int count_lines(int fd);
-void flood_fill(t_long *so_long, int pos_x, int pos_y);
-void get_player_cord(t_long *so_long);
-void map_check_borders(t_long *so_long);
-void map_check_player(t_long *so_long);
-void map_chek_width(t_long *so_long);
+void print_images(t_long *so_long);
+
+//player move
+int player_moves(int keycode,t_long *so_long);
+
+
+//cleaning
+void	cleanup_data(t_long *so_long);
+int clean_everything(t_long *so_long);
+void free_array(t_long *so_long);
+void clean_mlx(t_long *so_long);
+//close
+int ft_close(int keycode ,t_long *so_long);
+int ft_exit(t_long *so_long);
+
+
+
+//additional functions
+char	*ft_strnstr(const char *big, const char *little, size_t len);
+void Exit_cordinations(t_long *so_long);
+void Player_cordinations(t_long *so_long);
+int fill_array(t_long *so_long);
+void player_coin(t_long *so_long ,int x, int y);
 int map_check_coins(t_long *so_long);
-int move_player(int keycode, t_long *so_long);
-void player_coin(t_long *so_long);
-void exit_cordinations(t_long *so_long);
-void free_everything(t_long *so_long);
-void freefun (void ** p);
+int check_exit(t_long *so_long, int x, int y);
 #endif

@@ -99,6 +99,7 @@ char	*get_next_line(int fd)
 {
 	static char	*save_str;
 	char		*line;
+	char		*tmp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -108,6 +109,7 @@ char	*get_next_line(int fd)
 	line = get_line(save_str);
 	if (!line)
 		return (NULL);
-	save_str = left_lines(line, save_str);
+	tmp = left_lines(line, save_str);
+	save_str = tmp;	
 	return (line);
 }
