@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_moves1.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/29 23:45:01 by mboumlik          #+#    #+#             */
+/*   Updated: 2024/04/29 23:45:02 by mboumlik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../so_long.h"
 
 void up(t_long *so_long)
@@ -98,6 +110,5 @@ int player_moves(int keycode,t_long *so_long)
         left(so_long);   
     if (keycode == D || keycode == arrow_right)
         right(so_long);
-    // player_coin(so_long);
     return 0 ;
 }

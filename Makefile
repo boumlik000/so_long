@@ -1,5 +1,5 @@
 NAME = so_long
-CFLAGS = -Wall -Werror -Wextra -g -fsantize=address
+CFLAGS = -Wall -Werror -Wextra 
 CC = cc
 FT_PRINTF = ./ft_printf/libftprintf.a
 SRC = so_long.c \
@@ -16,17 +16,13 @@ all: $(NAME)
 $(OBJC) : $(SRC)
 
 $(NAME): $(OBJC) $(FT_PRINTF)
-	@-$(CC) $(OBJC) $(FT_PRINTF)  -lXext -lX11 -lmlx -o $(NAME)
-#$(NAME): $(OBJC) $(FT_PRINTF)
-#	@-$(CC) $(OBJC) $(FT_PRINTF) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	@-$(CC) $(OBJC) $(FT_PRINTF) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 $(FT_PRINTF):
 	make -C ft_printf
 
 %.o: %.c
-	@-$(CC) $(CFLAGS)  -c $< -o $@
-#%.o: %.c
-#	@-$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	@-$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	@-rm -rf $(OBJC) 
