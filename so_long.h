@@ -95,7 +95,9 @@ int	check_map_is_valid(t_long *so_long, char *filename);
 void flood_fill(t_long *so_long);
 
 //print img
-void load_images(t_long *so_long);
+void load_images0(t_long *so_long);
+void load_images1(t_long *so_long);
+void load_images2(t_long *so_long);
 void print_images(t_long *so_long);
 
 //player move

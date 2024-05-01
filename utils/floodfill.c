@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 23:44:25 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/04/29 23:44:26 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/05/01 09:57:12 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,17 @@ void flood_fill(t_long *so_long)
     so_long->collect_found = 0;
     Player_cordinations(so_long);
     map_check_coins(so_long);
-    //to check for coins
     fill_array(so_long);
     flood_fill_parsing(so_long,so_long->player_y, so_long->player_x);
     free_array(so_long);
-    //to check for exit
     fill_array(so_long);
     flood_fill_exit(so_long,so_long->player_y, so_long->player_x);
     free_array(so_long);
     
     if (so_long->collect_found != map_check_coins(so_long) || so_long->exit_found != 1)
-        (ft_printf("Error\nflood_fill unplayable map"),exit(1));
+    {
+        ft_printf("Error\nflood_fill unplayable map");
+        clean_mlx(so_long);
+        exit(1);        
+    }
 }
