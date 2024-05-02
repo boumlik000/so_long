@@ -7,7 +7,7 @@ SRC = so_long.c \
 	./get_next_line/get_next_line_utils.c  \
 	./utils/map_read.c ./utils/map_print.c ./utils/map_clean.c ./utils/utils.c \
 	./utils/map_window.c ./utils/map_cheker.c ./utils/map_cheker2.c\
-	./utils/player_moves1.c ./utils/floodfill.c ./utils/map_exit.c
+	./utils/player_moves1.c ./utils/floodfill.c ./utils/map_exit.c ./utils/load_image.c
 
 OBJC =  $(SRC:.c=.o)
 

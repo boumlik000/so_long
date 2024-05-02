@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 21:31:20 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/04/29 15:10:28 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/05/01 21:22:16 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ int	check_type(char c, va_list ap)
 		count += ft_putnbr_base1(va_arg(ap, unsigned long), "0123456789abcdef",
 				1);
 	else if (c == 'x')
-		count = ft_putnbr_base1(va_arg(ap, unsigned int), "0123456789abcdef", 0);
+		count = ft_putnbr_base1(va_arg(ap, unsigned int), "0123456789abcdef",
+				0);
 	else if (c == 'X')
-		count = ft_putnbr_base1(va_arg(ap, unsigned int), "0123456789ABCDEF", 0);
+		count = ft_putnbr_base1(va_arg(ap, unsigned int), "0123456789ABCDEF",
+				0);
 	return (count);
 }
 

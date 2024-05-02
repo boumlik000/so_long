@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr1.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 21:31:17 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/04/29 15:05:44 by mboumlik         ###   ########.fr       */
+/*   Created: 2023/12/15 21:31:14 by mboumlik          #+#    #+#             */
+/*   Updated: 2024/05/01 21:23:54 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr1(char *str)
+int	ft_putnbr1(int n)
 {
-	int	i;
+	int		len;
+	long	nb;
 
-	i = 0;
-	if (!str)
+	len = 0;
+	nb = n;
+	if (nb < 0)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		len = len + ft_putchar1('-');
+		nb = nb * -1;
 	}
-	while (str[i])
+	if (nb >= 10)
 	{
-		ft_putchar1(str[i]);
-		i++;
+		len = len + ft_putnbr1(nb / 10);
+		len = len + ft_putchar1((nb % 10) + 48);
 	}
-	return (i);
+	else
+		len = len + ft_putchar1(nb + 48);
+	return (len);
 }

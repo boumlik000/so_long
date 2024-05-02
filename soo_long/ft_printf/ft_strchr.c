@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base1.c                                   :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 21:31:10 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/04/29 15:07:46 by mboumlik         ###   ########.fr       */
+/*   Created: 2023/12/17 10:07:20 by mboumlik          #+#    #+#             */
+/*   Updated: 2024/05/01 21:23:59 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr_base1(unsigned long nbr, char *base, int i)
+int	ft_strchr1(const char *s, int c)
 {
-	int				len;
-	unsigned long	bs;
+	int	i;
 
-	len = 0;
-	if (i && !nbr)
-		return (ft_putstr1("(nil)"));
-	if (i)
-		len += ft_putstr1("0x");
-	bs = ft_strlen1(base);
-	if (nbr >= bs)
-		len += ft_putnbr_base1(nbr / bs, base, 0);
-	len += ft_putchar1(base[nbr % bs]);
-	return (len);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return (1);
+		i++;
+	}
+	if (s[i] == (char)c)
+		return (1);
+	return (0);
 }

@@ -110,6 +110,6 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (NULL);
 	tmp = left_lines(line, save_str);
-	save_str = tmp;	
+	save_str = tmp;
 	return (line);
 }
