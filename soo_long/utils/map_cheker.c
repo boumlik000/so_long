@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 23:44:41 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/05/02 13:14:35 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/05/04 07:57:39 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	map_chek_borders(t_long *so_long)
 			if (so_long->map[0][j] != '1' || so_long->map[so_long->map_y
 				- 1][j] != '1')
 			{
-				(ft_printf("Error\nin map border in width"), clean_mlx(so_long),
+				(ft_printf("Error\n[in map border width]"), clean_mlx(so_long),
 					exit(1));
 			}
 			if (so_long->map[i][0] != '1' || so_long->map[i][so_long->map_x
 				- 1] != '1')
 			{
-				(ft_printf("Error\nin map border in height"),
+				(ft_printf("Error\n[in map border height]"),
 					clean_mlx(so_long), exit(1));
 			}
 			j++;
@@ -83,7 +83,7 @@ void	validate_item_counts(t_long *so_long)
 	if (so_long->flag_coin < 1 || so_long->flag_exit != 1
 		|| so_long->flag_player != 1)
 	{
-		ft_printf("Error\nan item is missing\n");
+		ft_printf("Error\n[item is missing]\n");
 		clean_mlx(so_long);
 		exit(1);
 	}
@@ -104,7 +104,7 @@ void	map_check_items(t_long *so_long)
 				&& so_long->map[i][j] != 'E' && so_long->map[i][j] != '1'
 				&& so_long->map[i][j] != '0')
 			{
-				ft_printf("error in item [%c]", so_long->map[i][j]);
+				ft_printf("Error\nin item [%c]", so_long->map[i][j]);
 				clean_mlx(so_long);
 				exit(1);
 			}

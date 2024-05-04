@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 23:44:43 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/05/02 13:13:52 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/05/04 07:53:16 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	map_check_between(t_long *so_long)
 		{
 			if (so_long->map[i][0] != '1')
 			{
-				ft_printf("no empty line between lines in map \n");
+				ft_printf("Error\nno empty line between lines in map \n");
 				clean_mlx(so_long);
 				exit(1);
 			}

@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 23:44:54 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/05/02 16:44:57 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/05/04 07:55:51 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	file_count_lines(t_long *so_long, char **av)
 	so_long->fd = open(av[1], O_RDONLY);
 	if (so_long->fd == -1)
 	{
-		ft_printf("Error\nThere is no file with this name!");
+		ft_printf("Error\nread[1]");
 		exit(0);
 	}
 	lines_num = count_lines(so_long->fd);
@@ -53,7 +53,7 @@ void	read_map(t_long *so_long, char **av)
 	so_long->fd = open(av[1], O_RDONLY);
 	if (so_long->fd == -1)
 	{
-		ft_printf("Error\nThere is no file with this name!");
+		ft_printf("Error\nread[2]");
 		exit(0);
 	}
 	so_long->map = malloc((lines_num + 1) * sizeof(char *));

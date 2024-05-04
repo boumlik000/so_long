@@ -19,22 +19,22 @@ $(NAME): $(OBJC) $(FT_PRINTF)
 	@-$(CC) $(OBJC) $(FT_PRINTF) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 $(FT_PRINTF):
-	make -C ft_printf
+	@-make -C ft_printf
 
 %.o: %.c
 	@-$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	@-rm -rf $(OBJC) 
-	make clean -C ft_printf
+	@-make clean -C ft_printf
 
 fclean: clean
 	@-rm -rf $(NAME)
-	make fclean -C ft_printf
+	@-make fclean -C ft_printf
 
 re: fclean 
-	$(MAKE) all
-	$(MAKE) clean
+	@-$(MAKE) all
+	@-$(MAKE) clean
 	
 
 .SECONDARY:  $(OBJC)

@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 23:44:25 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/05/02 13:13:23 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/05/04 07:46:39 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	flood_fill(t_long *so_long)
 	if (so_long->collect_found != map_check_coins(so_long)
 		|| so_long->exit_found != 1)
 	{
-		ft_printf("Error\nflood_fill unplayable map");
+		ft_printf("Error\nunplayable map[flood_fill]");
 		clean_mlx(so_long);
 		exit(1);
 	}

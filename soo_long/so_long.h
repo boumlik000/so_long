@@ -6,7 +6,7 @@
 /*   By: mboumlik <mboumlik@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 21:21:31 by mboumlik          #+#    #+#             */
-/*   Updated: 2024/05/02 15:47:17 by mboumlik         ###   ########.fr       */
+/*   Updated: 2024/05/02 20:13:41 by mboumlik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void		load_images1(t_long *so_long);
 void		load_images2(t_long *so_long);
 void		load_images3(t_long *so_long);
 void		load_images4(t_long *so_long);
+void		load_images(t_long *so_long);
 void		print_images(t_long *so_long);
 void		free_imgs(t_long *so_long);
 void		free_images2(t_long *so_long);
